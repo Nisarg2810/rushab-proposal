@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A new rushabtours.com, proposal from Solviqo</title>
+<meta name="description" content="A package first website, a CMS to run it, and a CRM that keeps every enquiry in one place. Proposal and working prototype for Rushab Tours.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/site.css?v=2">
+<link rel="stylesheet" href="assets/prop.css?v=3">
+</head>
+<body class="prop">
+
+<header class="p-phd"><div class="wrap">
+  <a class="logo" href="#top"><i>RT</i> Rushab Tours</a>
+  <nav>
+    <a href="#demo">Prototype</a>
+    <a href="#site">The website</a>
+    <a href="#cms">The dashboard</a>
+    <a href="#crm">Leads</a>
+    <a href="#build">How it is built</a>
+    <a href="#plan">Plan</a>
+    <a href="#price">Investment</a>
+  </nav>
+</div></header>
+
+<!-- ============ HERO ============ -->
+<section class="p-ph" id="top"><div class="wrap">
+  <div class="p-eyebrow">Proposal for Rushab Tours, prepared by Solviqo</div>
+  <h1>A website built to sell holiday packages, and a dashboard built to run them.</h1>
+  <p>Flights and hotels stay with your booking partner. Everything else on the site points at one thing: a traveller choosing a package and sending you an enquiry. Then that enquiry lands in a dashboard your team actually enjoys opening.</p>
+  <div class="p-cta">
+    <a class="btn btn-p" href="site/">Open the website prototype</a>
+    <a class="btn btn-o" href="dashboard/">Open the dashboard</a>
+  </div>
+  <div class="p-meta">
+    <div><b>Both links are live</b><span>Click through them before you read anything else</span></div>
+    <div><b>Next.js, NestJS, PostgreSQL</b><span>The stack you asked for</span></div>
+    <div><b>8 to 10 weeks</b><span>From kick off to launch</span></div>
+  </div>
+</div></section>
+
+<!-- ============ WHAT YOU SAID ============ -->
+<section class="p-s" id="brief"><div class="wrap">
+  <div class="p-h"><div class="p-num">01</div><h2>What you asked for, in your words</h2>
+    <p>We built the prototype straight off this list, so you can check each one by clicking rather than by reading.</p></div>
+  <div class="p-g3">
+    <div class="p-said"><b>Packages are the business</b><p>Flights and hotels are third party. The site sells holiday packages, and nothing competes with them for attention.</p></div>
+    <div class="p-said"><b>A CMS at dashboard.rushabtours.com</b><p>Your team edits packages, photos, itineraries and prices without calling anyone.</p></div>
+    <div class="p-said"><b>A CRM for the enquiries</b><p>Every form becomes a lead, with as much detail about that traveller as we can honestly capture.</p></div>
+    <div class="p-said"><b>WhatsApp, bottom right</b><p>A short scripted chat first, then a handover to a real person on WhatsApp.</p></div>
+    <div class="p-said"><b>World class design, easy to use</b><p>Clean enough for a first time visitor, fast enough on a mid range Android phone.</p></div>
+    <div class="p-said"><b>MakeMyTrip level features</b><p>The parts that help someone pick a package. We have been deliberate about which parts those are.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ PROTOTYPE ============ -->
+<section class="p-s p-alt" id="demo"><div class="wrap">
+  <div class="p-h"><div class="p-num">02</div><h2>Try it now, it is not a picture</h2>
+    <p>Two working prototypes, built with your real Andaman package as the sample content. Search, filter, open a package, send an enquiry, then go and find that same enquiry in the dashboard.</p></div>
+  <div class="p-demo">
+    <div class="p-d">
+      <div class="p-bar"><i></i><i></i><i></i><span>rushabtours.com</span></div>
+      <div class="p-bd">
+        <h3>The website</h3>
+        <p>What a traveller sees, from the first search to the enquiry you receive.</p>
+        <ul>
+          <li>Search by destination, month, nights and budget</li>
+          <li>Filter the listing by theme and departure city</li>
+          <li>Open "A Short Trip to Andaman" for the full package page</li>
+          <li>Send an enquiry from the sticky price box</li>
+          <li>Open the WhatsApp bubble at the bottom right</li>
+        </ul>
+        <a class="btn btn-p" href="site/">Open the website</a>
+      </div>
+    </div>
+    <div class="p-d">
+      <div class="p-bar"><i></i><i></i><i></i><span>dashboard.rushabtours.com</span></div>
+      <div class="p-bd">
+        <h3>The dashboard</h3>
+        <p>What your team sees. The CMS and the CRM in one place, one login.</p>
+        <ul>
+          <li>Open Leads, then click any row for the full lead</li>
+          <li>Move a lead from New to Quoted to Won</li>
+          <li>Open the package editor and walk the eight tabs</li>
+          <li>Reorder an itinerary day, change a seasonal price</li>
+          <li>Check who on the team can do what</li>
+        </ul>
+        <a class="btn btn-b" href="dashboard/">Open the dashboard</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ THE WEBSITE ============ -->
+<section class="p-s" id="site"><div class="wrap">
+  <div class="p-h"><div class="p-num">03</div><h2>The website, page by page</h2>
+    <p>Every page has one job. Nothing on the site exists because other travel sites have it.</p></div>
+  <div class="p-g2" style="align-items:start">
+    <div>
+      <ul class="p-lst">
+        <li><b>Home.</b> One search box tuned for packages, the packages people actually booked this month, your destinations, and the four reasons someone books with a planner instead of an app.</li>
+        <li><b>Destination pages.</b> Andaman, Kerala, Kashmir, Dubai and the rest each get a real page with their own packages, their own photos and their own text. This is what brings search traffic.</li>
+        <li><b>Package listing.</b> Filters for destination, trip length, budget, theme and departure city, with sorting by price or by length. Fast, with no page reloads.</li>
+        <li><b>Package page.</b> Gallery, day by day itinerary, the named hotels with star rating, room type and meal plan, the sightseeing list, what is included, what is not, cancellation and payment policy, and a price box that follows you down the page.</li>
+        <li><b>Enquiry.</b> Short form, three fields that matter, and a confirmation that tells the traveller exactly when they will hear back.</li>
+        <li><b>Flights and hotels.</b> A clean strip that hands the traveller to your booking partner, without pulling them away from packages.</li>
+        <li><b>Group departures, visa, about, contact.</b> Simple pages, all editable by your team.</li>
+      </ul>
+    </div>
+    <div class="p-g2" style="grid-template-columns:1fr;gap:18px">
+      <div class="p-card"><span class="p-k">Built in from day one</span>
+        <h3>Fast on a cheap phone</h3>
+        <p>Pages are rendered on the server and images are resized and served in modern formats. The target is a package page that opens in under two seconds on 4G.</p></div>
+      <div class="p-card"><span class="p-k">Found on Google</span>
+        <h3>Search ready, not search bolted on</h3>
+        <p>Clean URLs like /holidays/andaman/3-nights-4-days, editable titles and descriptions per package, structured data for prices and reviews, a sitemap that updates itself.</p></div>
+      <div class="p-card"><span class="p-k">Every screen</span>
+        <h3>Designed on the phone first</h3>
+        <p>Most of your traffic is mobile. The filters, the gallery and the price box are built for a thumb, then widened for a laptop.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ MMT ============ -->
+<section class="p-s p-alt" id="mmt"><div class="wrap">
+  <div class="p-h"><div class="p-num">04</div><h2>The MakeMyTrip features worth taking, and the ones worth leaving</h2>
+    <p>They spend crores on that site, so we studied it. Some of it is built for a company selling flight inventory at scale, and copying that would slow you down and cost you money. Here is the honest split.</p></div>
+  <div class="p-tt-wrap"><table class="p-tt">
+    <thead><tr><th style="width:30%">Feature</th><th style="width:11%">We build it</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td><b>Search with destination, month, nights and budget</b></td><td class="p-yes">Yes</td><td>It is how a family starts. Four fields, no login, straight to a filtered list.</td></tr>
+      <tr><td><b>Filter and sort the listing</b></td><td class="p-yes">Yes</td><td>Theme, budget, length and departure city. Sorting by price is the single most used control on any travel site.</td></tr>
+      <tr><td><b>Detailed package page with day by day plan</b></td><td class="p-yes">Yes</td><td>This is your advantage over an app. Named hotels, real itineraries, honest exclusions.</td></tr>
+      <tr><td><b>Sticky price box with a call to action</b></td><td class="p-yes">Yes</td><td>The enquiry button should never be more than a thumb away.</td></tr>
+      <tr><td><b>Seasonal and date based pricing</b></td><td class="p-yes">Yes</td><td>Peak season pricing handled in the dashboard, so the site always shows the right rate for the date chosen.</td></tr>
+      <tr><td><b>Reviews and ratings on each package</b></td><td class="p-yes">Yes</td><td>Collected after travel, approved by you before they appear.</td></tr>
+      <tr><td><b>Shortlist and compare packages</b></td><td class="p-yes">Yes</td><td>Families compare two or three before they call. Better they compare yours than yours against someone else's.</td></tr>
+      <tr><td><b>WhatsApp and click to call</b></td><td class="p-yes">Yes</td><td>In India this converts better than any form. It is in the plan from day one.</td></tr>
+      <tr><td><b>Live flight and hotel inventory</b></td><td class="p-no">No</td><td>That needs supplier contracts and API fees. Your partner already does it, so we link out cleanly.</td></tr>
+      <tr><td><b>Online payment and instant booking engine</b></td><td class="p-no">Not now</td><td>Your packages are quoted and tailored, not bought off a shelf. We can add a token payment link later, once the enquiry flow is earning.</td></tr>
+      <tr><td><b>Loyalty wallet and coupon engine</b></td><td class="p-no">No</td><td>Built for repeat transactional buyers. A planner relationship does the same job better.</td></tr>
+      <tr><td><b>A mobile app</b></td><td class="p-no">No</td><td>Nobody installs an app to book one holiday a year. The site works like one on a phone.</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<!-- ============ CMS ============ -->
+<section class="p-s" id="cms"><div class="wrap">
+  <div class="p-h"><div class="p-num">05</div><h2>The dashboard, so you never wait on a developer</h2>
+    <p>Everything a traveller reads on the site is a field your team can edit at dashboard.rushabtours.com. No code, no tickets, no agency in the middle.</p></div>
+  <div class="p-g3">
+    <div class="p-card"><span class="p-k">Packages</span><h3>Eight tabs, one package</h3>
+      <p>Overview, hotels, itinerary, sightseeing, inclusions, pricing, gallery and the Google listing. Drag a day to reorder it, duplicate last year's package to build this year's.</p></div>
+    <div class="p-card"><span class="p-k">Photos</span><h3>A media library, not a folder</h3>
+      <p>Upload once, use the same photo across packages and destinations. Resizing, cropping and compression happen for you.</p></div>
+    <div class="p-card"><span class="p-k">Pricing</span><h3>Rates by date range</h3>
+      <p>Regular and peak rates, child with bed and without, and a strike through price. The site always shows the rate for the date the traveller picked.</p></div>
+    <div class="p-card"><span class="p-k">Destinations</span><h3>Each one is a page</h3>
+      <p>Hero photo, description, best months and the packages attached to it. Add a new destination without touching the code.</p></div>
+    <div class="p-card"><span class="p-k">Control</span><h3>Draft, preview, publish</h3>
+      <p>Work on a package privately, preview it exactly as a traveller will see it, publish when it is ready. Mistakes are one click back.</p></div>
+    <div class="p-card"><span class="p-k">People</span><h3>Roles that make sense</h3>
+      <p>Owner sees everything. A manager edits packages and works leads. Sales sees only leads. Content sees only packages and photos.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ CRM ============ -->
+<section class="p-s p-alt" id="crm"><div class="wrap">
+  <div class="p-h"><div class="p-num">06</div><h2>Every enquiry, with as much as we can honestly know about it</h2>
+    <p>You asked for as much data about a lead as possible. Some of it the traveller types. The rest the website knows already and currently throws away.</p></div>
+  <div class="p-g2" style="align-items:start">
+    <div class="p-card"><span class="p-k">What the traveller gives you</span>
+      <ul class="p-lst" style="margin-top:4px">
+        <li>Name, mobile number and whether that number is on WhatsApp</li>
+        <li>Email</li>
+        <li>The package and the destination they were reading</li>
+        <li>Travel date and how flexible it is</li>
+        <li>How many adults, how many children, and their ages</li>
+        <li>Budget band and any note they type</li>
+      </ul>
+    </div>
+    <div class="p-card"><span class="p-k">What the website already knows</span>
+      <ul class="p-lst" style="margin-top:4px">
+        <li>Source: Google Ads, organic search, Instagram, referral or the WhatsApp bubble</li>
+        <li>The exact campaign or the search term that brought them</li>
+        <li>City and device</li>
+        <li>How long they stayed, and every page they opened before enquiring</li>
+        <li>Which package they looked at first, and which one they enquired about</li>
+        <li>Whether they have enquired before, matched on the mobile number</li>
+      </ul>
+    </div>
+  </div>
+  <div class="p-g4" style="margin-top:22px">
+    <div class="p-card"><h3>A pipeline</h3><p>New, contacted, quoted, won, lost. One click to move a lead, and the team sees it instantly.</p></div>
+    <div class="p-card"><h3>Owners and reminders</h3><p>Assign a lead to a person, set a follow up, and get a nudge when it is due.</p></div>
+    <div class="p-card"><h3>One tap to reply</h3><p>Call, or open WhatsApp with their name and package already in the message.</p></div>
+    <div class="p-card"><h3>Numbers you can trust</h3><p>Enquiries, bookings and value by month, by package and by source, so you know which ad actually paid.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ WHATSAPP ============ -->
+<section class="p-s" id="wa"><div class="wrap">
+  <div class="p-h"><div class="p-num">07</div><h2>WhatsApp, scripted first and then a real person</h2>
+    <p>The bubble at the bottom right does not just open WhatsApp. It asks three or four questions first, so your team opens the chat already knowing what the trip is.</p></div>
+  <div class="p-steps">
+    <div class="p-step"><div class="p-w">Step one<small>On the site</small></div><div>
+      <h3>A short scripted chat</h3>
+      <p>Where would you like to go, when, how many travellers, and your budget. Buttons, not typing. It takes fifteen seconds and feels like a conversation rather than a form.</p></div></div>
+    <div class="p-step"><div class="p-w">Step two<small>Handover</small></div><div>
+      <h3>It moves to real WhatsApp</h3>
+      <p>The traveller taps once and lands in a WhatsApp chat with your number, with their answers already written into the first message. Nobody has to repeat themselves.</p></div></div>
+    <div class="p-step"><div class="p-w">Step three<small>In the dashboard</small></div><div>
+      <h3>It is already a lead</h3>
+      <p>Before your team even replies, the chat has created a lead with the answers, the source and the page they were on. Chats stop getting lost in a phone.</p></div></div>
+    <div class="p-step"><div class="p-w">Later<small>Optional</small></div><div>
+      <h3>Official WhatsApp Business API</h3>
+      <p>If you want quote PDFs, payment reminders and itinerary updates sent automatically, we can connect the official API. It carries a small per message cost from Meta, so we would only do it once the enquiry volume justifies it.</p></div></div>
+  </div>
+</div></section>
+
+<!-- ============ STACK ============ -->
+<section class="p-s p-alt" id="build"><div class="wrap">
+  <div class="p-h"><div class="p-num">08</div><h2>How it is built</h2>
+    <p>Exactly the stack you specified. All of it is mainstream and well documented, so you are never locked to one developer, including us.</p></div>
+  <div class="p-stack">
+    <div><small>Frontend</small><b>Next.js, React, TypeScript</b><span>Server rendered pages for speed and for Google, typed code so a change in one place cannot quietly break another.</span></div>
+    <div><small>Styling</small><b>Bootstrap, responsive</b><span>A familiar grid any developer can pick up, with a Rushab Tours theme layered on top so it does not look like a template.</span></div>
+    <div><small>Backend</small><b>Node.js, NestJS, REST</b><span>A clean REST API with validation, roles and documentation, so the site, the dashboard and anything you add later all talk to the same thing.</span></div>
+    <div><small>Database</small><b>PostgreSQL</b><span>Packages, itineraries, prices, leads and users, with daily automated backups and point in time recovery.</span></div>
+  </div>
+  <div class="p-g3" style="margin-top:22px">
+    <div class="p-card"><h3>Hosting and deployment</h3><p>Frontend on a global edge network, API and database on a managed host in the India region so pages load fast for Indian travellers. Deployments are automated, and any release can be rolled back.</p></div>
+    <div class="p-card"><h3>Security</h3><p>HTTPS everywhere, hashed passwords, role based access, rate limited forms, spam protection on the enquiry form, and an audit trail of who changed which package.</p></div>
+    <div class="p-card"><h3>Yours, not ours</h3><p>The code sits in a repository in your name, the domains and hosting stay in your accounts, and the database can be exported any time. Handover is written into the plan, not promised at the end.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ PLAN ============ -->
+<section class="p-s" id="plan"><div class="wrap">
+  <div class="p-h"><div class="p-num">09</div><h2>The plan, eight to ten weeks</h2>
+    <p>You see working software from week two, not a document. Every Friday you get a link to the current build and a short note on what moved.</p></div>
+  <div class="p-steps">
+    <div class="p-step"><div class="p-w">Weeks 1 to 2<small>Design and data</small></div><div>
+      <h3>The look, and the shape of a package</h3>
+      <p>Final design for the home, listing, package and destination pages, on desktop and phone. In parallel we map every field a package needs, using your existing packages as the test. Nothing is built until you have signed off the design.</p></div></div>
+    <div class="p-step"><div class="p-w">Weeks 3 to 5<small>Build</small></div><div>
+      <h3>The dashboard and the API</h3>
+      <p>PostgreSQL schema, the NestJS API, authentication and roles, the package editor with all eight tabs, the media library, destinations and the pricing calendar. By the end of this your team can start loading packages.</p></div></div>
+    <div class="p-step"><div class="p-w">Weeks 5 to 7<small>Build</small></div><div>
+      <h3>The website</h3>
+      <p>Home, search, listing with filters, package pages, destination pages, the enquiry flow, the WhatsApp bubble and the lead capture that feeds the CRM. Built against real content, not placeholder text.</p></div></div>
+    <div class="p-step"><div class="p-w">Week 8<small>Content</small></div><div>
+      <h3>Loading your packages</h3>
+      <p>We move your current packages across with you and train your team on the dashboard, screen by screen, recorded so new staff can watch it later.</p></div></div>
+    <div class="p-step"><div class="p-w">Weeks 9 to 10<small>Launch</small></div><div>
+      <h3>Testing, speed, Google, live</h3>
+      <p>Testing on real phones, speed tuning, redirects from your current URLs so you keep your Google rankings, analytics and ads tracking connected, then the switch. We stay on hand through the first fortnight.</p></div></div>
+  </div>
+</div></section>
+
+<!-- ============ SCOPE ============ -->
+<section class="p-s p-alt" id="scope"><div class="wrap">
+  <div class="p-h"><div class="p-num">10</div><h2>What you get, and what you do not</h2>
+    <p>Written plainly so there are no surprises in week nine.</p></div>
+  <div class="p-g2" style="align-items:start">
+    <div class="p-card"><span class="p-k">Included</span>
+      <ul class="p-lst" style="margin-top:4px">
+        <li>Complete design for every page, desktop and phone</li>
+        <li>The public website, built in Next.js, React and TypeScript</li>
+        <li>The dashboard: package CMS, media library, destinations, users and roles</li>
+        <li>The CRM: leads, pipeline, owners, reminders and reporting</li>
+        <li>The NestJS REST API and the PostgreSQL database</li>
+        <li>WhatsApp bubble with the scripted chat and handover</li>
+        <li>Search setup, redirects from your current site, sitemap and structured data</li>
+        <li>Analytics and Google Ads conversion tracking</li>
+        <li>Migration of your existing packages, together with your team</li>
+        <li>Training, recorded, plus a short written guide</li>
+        <li>Thirty days of support after launch, and all code handed to you</li>
+      </ul>
+    </div>
+    <div class="p-card"><span class="p-k">Not included, and why</span>
+      <ul class="p-lst p-no" style="margin-top:4px">
+        <li>Flight and hotel booking inventory. Your partner handles that, we link to them.</li>
+        <li>Online payment and instant booking. Can be added later once enquiries are flowing.</li>
+        <li>Photography and video. We will happily use what you have and point out the gaps.</li>
+        <li>Writing the package descriptions. We move and format yours, and tidy the English.</li>
+        <li>Ad spend and running the campaigns, though the tracking is built for them.</li>
+        <li>Hosting and domain fees, paid on your own accounts, roughly five to seven thousand rupees a month at your traffic.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="p-card" style="margin-top:22px"><span class="p-k">What we need from you</span>
+    <p style="margin-bottom:10px">Four things, and the project never stalls: a single person who can approve design decisions, your current package content in whatever form it exists, your photo library, and access to the domain, Google Analytics and the Ads account. Everything else is ours to carry.</p></div>
+</div></section>
+
+<!-- ============ PRICE ============ -->
+<section class="p-s" id="price"><div class="wrap">
+  <div class="p-h"><div class="p-num">11</div><h2>Investment</h2>
+    <p>One figure for the whole thing. No hourly billing, no change requests priced mid project, and revisions within the agreed scope are simply part of the work.</p></div>
+  <!-- NUMBER: change the figure below if the commercial lands differently -->
+  <div class="p-price">
+    <div class="p-top">
+      <div><div class="p-big">&#8377;4,50,000</div><small>Website, dashboard, CRM and migration, complete and live</small></div>
+      <div style="text-align:right"><b style="color:#fff;font-size:17px">Thirty days of support</b><br><small>Included after launch, not billed</small></div>
+    </div>
+    <div class="p-pay">
+      <div><b>40 percent</b><span>On kick off, to start design</span></div>
+      <div><b>30 percent</b><span>When the dashboard is working</span></div>
+      <div><b>30 percent</b><span>On launch, once you are happy</span></div>
+    </div>
+    <div class="p-inc">
+      <span>No charge for revisions in scope</span>
+      <span>No monthly licence on the CMS</span>
+      <span>Code and data are yours</span>
+      <span>Weekly build link, so you see progress</span>
+    </div>
+  </div>
+  <div class="p-g3" style="margin-top:22px">
+    <div class="p-card"><h3>After the thirty days</h3><p>Optional care at a fixed monthly fee: updates, backups, monitoring, small content and design changes, and a person who answers. Entirely your choice, and you can stop any month.</p></div>
+    <div class="p-card"><h3>Adding things later</h3><p>Payments, the official WhatsApp API, a group departures booking flow or a B2B agent login. Each one quoted on its own, only when you want it.</p></div>
+    <div class="p-card"><h3>If you want to start smaller</h3><p>We can launch the website and the package CMS first and add the CRM in a second phase. It costs a little more in total, so we would only suggest it if cash flow calls for it.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ END ============ -->
+<section class="p-end"><div class="wrap">
+  <h2>Click through the prototype, then tell us what to change.</h2>
+  <p>Nothing here is fixed. If the search should ask something different, or a package page needs a section we have missed, say so and we will move it before a line of real code is written.</p>
+  <div class="p-cta">
+    <a class="btn btn-p" href="site/">Open the website prototype</a>
+    <a class="btn btn-o" href="dashboard/">Open the dashboard</a>
+  </div>
+</div></section>
+
+<footer class="p-pf"><div class="wrap">
+  <span>Prepared for Rushab Tours by Solviqo. Photos and prices in the prototype are placeholders.</span>
+  <span>solviqodigital@gmail.com</span>
+</div></footer>
+
+</body>
+</html>

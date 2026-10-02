@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rushab Tours dashboard, prototype</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=1">
+<link rel="stylesheet" href="../assets/dash.css?v=1">
+</head>
+<body class="dash">
+
+<div class="rib"><div class="wrap">
+  <span class="tag">Prototype</span>
+  <b>dashboard.rushabtours.com</b>
+  Edit a package, open a lead, move it through the pipeline. Nothing here is saved.
+  <a href="../site/">Open the website</a>
+</div></div>
+
+<div class="shell">
+  <aside class="side">
+    <div class="side-logo"><i>RT</i><span>Rushab Tours</span></div>
+    <nav>
+      <a data-v="vHome" class="on"><i>&#9632;</i>Overview</a>
+      <a data-v="vLeads"><i>&#9650;</i>Leads <b id="newCount">3</b></a>
+      <a data-v="vPkgs"><i>&#9679;</i>Packages</a>
+      <a data-v="vEdit"><i>&#9644;</i>Package editor</a>
+      <a data-v="vDest"><i>&#9670;</i>Destinations</a>
+      <a data-v="vMedia"><i>&#9633;</i>Media</a>
+      <a data-v="vTeam"><i>&#9678;</i>Team and roles</a>
+    </nav>
+    <div class="side-user"><div class="av">RT</div><div><b>Rushab Shah</b><small>Owner</small></div></div>
+  </aside>
+
+  <main class="main">
+    <!-- ================= OVERVIEW ================= -->
+    <section class="view on" id="vHome">
+      <header class="top"><div><h1>Overview</h1><p>Monday, 2 October. Here is where things stand.</p></div>
+        <div class="tools"><button class="btn btn-o btn-sm">This month</button><button class="btn btn-b btn-sm">New package</button></div></header>
+
+      <div class="kpis" id="kpis"></div>
+
+      <div class="cols2">
+        <div class="panel">
+          <div class="panel-h"><h3>Enquiries, last 14 days</h3><span class="muted">Peaks on the days ads run</span></div>
+          <div class="chart" id="chart"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-h"><h3>Where leads come from</h3></div>
+          <div id="srcList"></div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:20px">
+        <div class="panel-h"><h3>Latest enquiries</h3><a class="link" data-v="vLeads">Open leads</a></div>
+        <div id="recent"></div>
+      </div>
+    </section>
+
+    <!-- ================= LEADS ================= -->
+    <section class="view" id="vLeads">
+      <header class="top"><div><h1>Leads</h1><p>Every enquiry from the website, the WhatsApp bubble and the phone.</p></div>
+        <div class="tools"><input class="srch" id="lq" placeholder="Search name, number or package"><button class="btn btn-o btn-sm">Export</button></div></header>
+
+      <div class="tabs" id="lTabs"></div>
+      <div class="panel nopad"><div class="tbl-wrap"><table class="tbl" id="lTable"></table></div></div>
+    </section>
+
+    <!-- ================= PACKAGES ================= -->
+    <section class="view" id="vPkgs">
+      <header class="top"><div><h1>Packages</h1><p>Eight live, two drafts. Duplicate one to build the next.</p></div>
+        <div class="tools"><input class="srch" id="pq" placeholder="Search packages"><button class="btn btn-b btn-sm" data-v="vEdit">New package</button></div></header>
+      <div class="panel nopad"><div class="tbl-wrap"><table class="tbl" id="pTable"></table></div></div>
+    </section>
+
+    <!-- ================= PACKAGE EDITOR ================= -->
+    <section class="view" id="vEdit">
+      <header class="top"><div><h1>A Short Trip to Andaman</h1><p>Last edited 2 days ago by Rushab. <span class="pill live">Live</span></p></div>
+        <div class="tools"><button class="btn btn-o btn-sm">Preview</button><button class="btn btn-o btn-sm">Duplicate</button><button class="btn btn-b btn-sm">Save changes</button></div></header>
+
+      <div class="etabs" id="eTabs"></div>
+      <div id="eBody"></div>
+    </section>
+
+    <!-- ================= OTHERS ================= -->
+    <section class="view" id="vDest"><header class="top"><div><h1>Destinations</h1><p>Each one gets a page, a hero image and its own packages.</p></div></header>
+      <div class="cards4" id="destCards"></div></section>
+
+    <section class="view" id="vMedia"><header class="top"><div><h1>Media</h1><p>Photos used across packages, destinations and the homepage.</p></div>
+      <div class="tools"><button class="btn btn-b btn-sm">Upload</button></div></header>
+      <div class="media" id="mediaGrid"></div></section>
+
+    <section class="view" id="vTeam"><header class="top"><div><h1>Team and roles</h1><p>Who can edit packages, who can only work leads.</p></div>
+      <div class="tools"><button class="btn btn-b btn-sm">Invite</button></div></header>
+      <div class="panel nopad"><div class="tbl-wrap"><table class="tbl" id="tTable"></table></div></div></section>
+  </main>
+</div>
+
+<!-- lead drawer -->
+<div class="drawer-mask" id="dMask"><aside class="drawer" id="drawer"></aside></div>
+
+<script src="../assets/data.js?v=1"></script>
+<script src="../assets/dash.js?v=1"></script>
+</body>
+</html>
