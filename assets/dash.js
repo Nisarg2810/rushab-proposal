@@ -148,11 +148,25 @@
         ef('Best months', p.months.join(', ')) + '</div>';
     } else if (state.etab === 'Hotels') {
       b = '<p class="hint">Hotels per city, with the star rating, room type and meal plan the traveller sees before paying.</p>' +
-        p.hotels.map(function (h) { return row(h.name + '  ·  ' + h.star + ' star', h.city + ' · ' + h.room + ' · ' + h.meal); }).join('') +
+        p.hotels.map(function (h) { return row(h.name + '  ·  ' + h.star + ' star',
+          h.city + '<br>' + h.dates + ' · ' + h.room + ' · ' + h.meal + ' · room inclusion: ' + h.roomInc); }).join('') +
         '<button class="addrow">Add a hotel</button>';
     } else if (state.etab === 'Itinerary') {
-      b = '<p class="hint">Drag a day to reorder it. Each day holds its own list of lines, exactly as they appear on the page.</p>' +
-        p.itinerary.map(function (d) { return row('Day ' + d.day + ': ' + d.title, d.items.length + ' lines'); }).join('') +
+      var d1 = p.itinerary[0];
+      b = '<p class="hint">Each day carries its own date, title and ordered lines, and any line can hold a sub list. Day one is opened here, the rest are collapsed. Drag to reorder.</p>' +
+        '<div class="erow">' + ef('Day number', String(d1.day)) + ef('Date', d1.date) + '</div>' +
+        ef('Day title', d1.title) +
+        '<div class="lines">' + d1.items.map(function (x) {
+          return '<div class="line"><span class="dg">☰</span><div><input value="' + x.t.replace(/"/g, '&quot;') + '">' +
+            (x.sub ? '<div class="subs">' + x.sub.map(function (y) {
+              return '<div class="sub"><span>•</span><input value="' + y.replace(/"/g, '&quot;') + '"></div>'; }).join('') +
+              '<button class="addsub">Add a sub line</button></div>' : '') +
+            '</div><button class="del" title="Remove">&times;</button></div>';
+        }).join('') + '</div>' +
+        '<button class="addrow" style="margin-bottom:24px">Add a line to day 1</button>' +
+        p.itinerary.slice(1).map(function (d) {
+          return row('Day ' + d.day + ': ' + d.title, d.date + ' · ' + d.items.length + ' lines' +
+            (d.items.some(function (x) { return x.sub; }) ? ', with sub lines' : '')); }).join('') +
         '<button class="addrow">Add a day</button>';
     } else if (state.etab === 'Sightseeing') {
       b = '<p class="hint">Each place has a photo and a short note. Reuse them across packages instead of retyping.</p>' +

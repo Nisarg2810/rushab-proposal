@@ -87,13 +87,20 @@
   function stars(n) { return new Array(n + 1).join('★'); }
 
   function detail(p) {
+    var line = function (x) {
+      if (typeof x === 'string') return '<li>' + x + '</li>';
+      return '<li>' + x.t + (x.sub ? '<ul class="sub">' + x.sub.map(function (y) { return '<li>' + y + '</li>'; }).join('') + '</ul>' : '') + '</li>';
+    };
     var days = (p.itinerary || []).map(function (d) {
-      return '<details class="day"' + (d.day === 1 ? ' open' : '') + '><summary><i>Day ' + d.day + '</i>' + d.title + '</summary>' +
-        '<ul>' + d.items.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></details>';
+      return '<details class="day"' + (d.day === 1 ? ' open' : '') + '><summary><i>Day ' + d.day +
+        (d.date ? '<em>' + d.date + '</em>' : '') + '</i>' + d.title + '</summary>' +
+        '<ul>' + d.items.map(line).join('') + '</ul></details>';
     }).join('');
     var hotels = (p.hotels || []).map(function (h) {
       return '<div class="hotel"><div class="img"></div><div><b>' + h.name + '</b><span class="st">' + stars(h.star) + '</span>' +
-        '<small>' + h.city + '</small><small>' + h.dates + ' · ' + h.room + ' · ' + h.meal + '</small></div></div>';
+        '<small>' + h.city + '</small><small>' + h.dates + '</small>' +
+        '<small>Room type: ' + h.room + ' &nbsp;·&nbsp; Meal plan: ' + h.meal + '</small>' +
+        (h.roomInc ? '<small>Room inclusion: ' + h.roomInc + '</small>' : '') + '</div></div>';
     }).join('');
     var sights = (p.sights || []).map(function (s) {
       return '<div class="sight"><div class="img"></div><div><b>' + s.name + '</b><p>' + s.note + '</p></div></div>';
@@ -134,11 +141,12 @@
         '<span>per person, on twin sharing</span></div>' +
         '<div class="body">' +
           '<div class="fld"><label>Travel date</label><input type="date" id="bDate" value="2026-10-30"></div>' +
-          '<div class="fld"><label>Travellers</label><select id="bPax">' +
-            '<option value="2,0">2 adults</option><option value="2,1">2 adults, 1 child</option>' +
-            '<option value="4,0">4 adults</option><option value="6,0">6 adults</option></select></div>' +
+          '<div class="fld"><label>Travellers</label>' +
+            '<div class="pax"><div><span>Adults</span><button data-pax="a-">&minus;</button><b id="pA">2</b><button data-pax="a+">+</button></div>' +
+            '<div><span>Children</span><button data-pax="c-">&minus;</button><b id="pC">0</b><button data-pax="c+">+</button></div></div></div>' +
           '<div class="fld"><label>Departure city</label><select id="bCity">' + (p.from || ['Mumbai']).map(function (c) { return '<option>' + c + '</option>'; }).join('') + '</select></div>' +
-          '<div class="total"><span>Total for your group</span><b id="bTotal">' + inr(p.price * 2) + '</b></div>' +
+          '<div class="total"><span>Per person<small id="bPax">2 adults, 0 children</small></span><b>' + inr(p.price) + '</b></div>' +
+          '<div class="total grand"><span>Total amount</span><b id="bTotal">' + inr(p.price * 2) + '</b></div>' +
           '<button class="btn btn-p" data-enq="' + p.id + '">Send my enquiry</button>' +
           '<p class="small">A planner calls you back the same day. No payment now.</p>' +
           '<div class="badges"><span>Hotels named upfront</span><span>Transfers included</span><span>Free date change</span></div>' +
@@ -148,13 +156,22 @@
       '<div class="sec tight" style="padding-bottom:0"><div class="sec-h"><div><h2 style="font-size:26px">Travellers also looked at</h2></div></div>' +
       '<div class="grid">' + similar.map(card).join('') + '</div></div>';
 
+    state.pax = { a: 2, c: 0 };
     var sync = function () {
-      var v = ($('#bPax') || {}).value || '2,0';
-      var a = +v.split(',')[0], c = +v.split(',')[1];
-      state.pax = { a: a, c: c };
+      var a = state.pax.a, c = state.pax.c;
+      $('#pA').textContent = a; $('#pC').textContent = c;
+      $('#bPax').textContent = a + (a === 1 ? ' adult, ' : ' adults, ') + c + (c === 1 ? ' child' : ' children');
       $('#bTotal').textContent = inr(p.price * a + Math.round(p.price * 0.7) * c);
     };
-    if ($('#bPax')) $('#bPax').onchange = sync;
+    $$('[data-pax]').forEach(function (b) {
+      b.onclick = function () {
+        var k = b.getAttribute('data-pax'), f = k[0], up = k[1] === '+';
+        var v = state.pax[f] + (up ? 1 : -1);
+        state.pax[f] = Math.max(f === 'a' ? 1 : 0, Math.min(12, v));
+        sync();
+      };
+    });
+    sync();
   }
 
   /* ---------------------------------------------------------- enquiry form */

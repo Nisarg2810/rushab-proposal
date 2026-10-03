@@ -11,28 +11,65 @@ window.PKGS = [
     blurb: 'Two nights in Port Blair and one on Havelock, with Cellular Jail, the Light and Sound show and Radhanagar Beach.',
     cities: [{ name: 'Port Blair', nights: 2 }, { name: 'Havelock Island', nights: 1 }],
     hotels: [
-      { city: 'Port Blair, Andaman and Nicobar Islands', name: 'OLIVE HOTEL or BELL ELITE', star: 3, dates: '30 Oct 26 to 01 Nov 26', room: 'Deluxe room', meal: 'Breakfast only (CP)' },
-      { city: 'Havelock Island, Andaman and Nicobar Islands', name: 'HAYWIZZ HAVELOCK or ILE BAY', star: 3, dates: '01 Nov 26 to 02 Nov 26', room: 'Deluxe room', meal: 'Breakfast only (CP)' }
+      { city: 'Port Blair, Andaman and Nicobar Islands, India', name: 'OLIVE HOTEL or BELL ELITE', star: 3, dates: '30 Oct 26 to 01 Nov 26', room: 'Deluxe room', meal: 'Breakfast only (CP)', roomInc: 'As per hotel' },
+      { city: 'Havelock Island, Andaman and Nicobar Islands, India', name: 'HAYWIZZ HAVELOCK or ILE BAY', star: 3, dates: '01 Nov 26 to 02 Nov 26', room: 'Deluxe room', meal: 'Breakfast only (CP)', roomInc: 'As per hotel' }
     ],
     itinerary: [
-      { day: 1, title: 'Arrival at Port Blair and local sightseeing', items: ['Warm welcome at Veer Savarkar International Airport.', 'Meet and greet, then transfer to the hotel.', 'Afternoon sightseeing: Marina Park, Flag Point, Cellular Jail.', 'Light and Sound show at Cellular Jail in the evening.', 'Overnight stay in Port Blair.'] },
-      { day: 2, title: 'Port Blair to Havelock and Radhanagar Beach', items: ['Breakfast, check out and transfer to the harbour.', 'Air conditioned cruise to Havelock Island.', 'Check in, then visit Radhanagar Beach after lunch.', 'Sunset at the beach, then back to the hotel.', 'Overnight stay at Havelock.'] },
-      { day: 3, title: 'Havelock back to Port Blair', items: ['Breakfast and check out.', 'Ferry back to Port Blair.', 'Complimentary shopping transfer to Samudrika Emporium.', 'Overnight stay in Port Blair.'] },
-      { day: 4, title: 'Departure', items: ['Breakfast at the hotel.', 'Transfer to the airport for your flight home.'] }
+      { day: 1, date: '30 Oct 26', title: 'Arrival at Port Blair, local sightseeing', items: [
+        { t: 'Warm welcome on arrival at Veer Savarkar International Airport, Port Blair.' },
+        { t: 'Meet and greet by our representative, then transfer to the hotel.' },
+        { t: 'Check in and relax.' },
+        { t: 'In the afternoon, proceed for local sightseeing covering:', sub: ['Marina Park', 'Flag Point', 'Cellular Jail', 'Light and Sound Show at Cellular Jail, on the saga of India\u2019s freedom fighters'] },
+        { t: 'Return to the hotel for an overnight stay in Port Blair.' }
+      ] },
+      { day: 2, date: '31 Oct 26', title: 'Port Blair to Havelock Island, Radhanagar Beach', items: [
+        { t: 'Breakfast at the hotel.' },
+        { t: 'Check out and transfer to the harbour.' },
+        { t: 'Board the air conditioned cruise to Havelock Island.' },
+        { t: 'On arrival, transfer to the hotel and complete check in formalities.' },
+        { t: 'After lunch, visit the world famous Radhanagar Beach, known for its white sand and clear turquoise water.' },
+        { t: 'Enjoy the sunset before returning to the hotel.' },
+        { t: 'Overnight stay at Havelock Island.' }
+      ] },
+      { day: 3, date: '01 Nov 26', title: 'Havelock to Port Blair', items: [
+        { t: 'Breakfast and check out from the hotel.' },
+        { t: 'Transfer to the harbour and board the return ferry to Port Blair.' },
+        { t: 'On arrival, transfer to the hotel.' },
+        { t: 'In the evening, a complimentary shopping transfer to Samudrika Emporium, one of the finest government authorised handicraft stores in the Andamans.' },
+        { t: 'Overnight stay at Port Blair.' }
+      ] },
+      { day: 4, date: '02 Nov 26', title: 'Departure', items: [
+        { t: 'Breakfast at the hotel.' },
+        { t: 'Check out and transfer to Veer Savarkar International Airport for your onward journey, with beautiful memories of the Andaman Islands.' }
+      ] }
     ],
     sights: [
-      { name: 'Marina Park', note: 'Small park with scenic views, a kids play area and a long pier with access to boating and water sports.' },
-      { name: 'Flag Point', note: 'Known for its towering flagpole of 161 feet, proudly displaying the Indian tricolour.' },
+      { name: 'Marina Park', note: 'Small park with scenic views, kids play areas and a long pier with access to boating and water sports.' },
+      { name: 'Flag Point', note: 'The towering flag pole stands at 150m, proudly displaying the Indian tricolour, a symbol of national pride and unity.' },
       { name: 'Cellular Jail', note: 'Also known as Kala Pani, a former British colonial prison in the Andaman and Nicobar Islands.' },
-      { name: 'Light and Sound Show', note: 'Narrates the history of the jail, with freedom fighters before and after independence.' },
-      { name: 'Samudrika Emporium', note: 'Government authorised store for handicrafts, pearl jewellery and local souvenirs.' },
-      { name: 'Radhanagar Beach', note: 'Famous for white sand and turquoise water, with a Blue Flag eco certification.' }
+      { name: 'Light and Sound Show, Cellular Jail', note: 'A show narrating the history of a jail whose prisoners included freedom fighters before and after independence.' },
+      { name: 'Samudrika Emporium', note: 'The government run shop for authentic local handicrafts, fixed price souvenirs and island memorabilia, managed by the Andaman and Nicobar administration.' },
+      { name: 'Radhanagar Beach', note: 'On Swaraj Dweep, known for powdery white sand, turquoise water and its Blue Flag eco certification.' }
     ],
-    inc: ['Accommodation in air conditioned rooms on double sharing basis.', 'Daily breakfast only.', 'All transfers and sightseeing by private car, point to point.', 'Port Blair to Havelock by air conditioned cruise.', 'Entry to Cellular Jail Light and Sound show.', 'All entry, monument, parking and permit charges as per itinerary.', 'Meet and assist at all arrival and departure points by our representative.'],
-    exc: ['Airfare.', 'Anything not mentioned in the inclusions.', 'Lunch and dinner.', 'Personal expenses, tips and travel insurance.'],
-    notes: ['The above itinerary is subject to weather conditions and may be changed for your convenience and ferry timings.', 'Being an island, water activities are subject to point to point basis only as per shared itinerary.', 'Child above two years and below five years at 50 percent of cost, ferry charges applicable.', 'Child below two years is complimentary without a mattress.'],
-    cancel: ['60 percent before 30 days of check in.', '50 percent before 45 days of check in.', '80 percent before 30 days of check in.', '100 percent within 20 days from date of departure.'],
-    pay: ['100 percent of flight cost at booking.', '50 percent of package amount at the time of booking.', '100 percent before 25 days of travelling date.']
+    inc: [
+      'Accommodation in air conditioned room on double sharing basis.',
+      'Meals: daily breakfast only.',
+      'All transfers and sightseeing by private air conditioned cab, point to point only.',
+      'To and fro ticket to Havelock by air conditioned cruise: Makruzz, Nautika, Green Ocean or ITT Majestic.',
+      'Entry to Cellular Jail and the Light and Sound show.',
+      'All entry, monument, parking and permit charges as per itinerary.',
+      'Meet and assist at all arrival and departure points by a professional local tour manager.',
+      '2 to 4 pax: Maruti Ertiga or similar, one cab. 5 to 6 pax: Maruti Ertiga, Mahindra Scorpio, Tavera or Mahindra Xylo, one cab. Additional cab during airport and harbour transfers.'
+    ],
+    exc: ['Airfare.', 'Cost of services which is not mentioned in the inclusions.', 'Meals other than those listed.'],
+    notes: [
+      'The above itinerary is subject to weather conditions and may change as per convenience and ferry timings.',
+      'Being an island, the vehicle is on a point to point basis only, as per the shared itinerary.',
+      'Child above 2 years and below 5 years at INR 6,500 for ferry charges, applicable.',
+      'Child below 2 years complimentary, without a mattress.'
+    ],
+    cancel: ['30 percent before 60 days of check in.', '55 percent before 45 days of check in.', '80 percent before 30 days of check in.', '100 percent within 30 days from the date of departure.'],
+    pay: ['100 percent of the flight cost.', '50 percent of the package amount at the time of booking.', '100 percent before 25 days of the travelling date.']
   },
   { id: 'kerala-5n', name: 'Kerala Backwaters and Hills', dest: 'Kerala', country: 'India', theme: ['Honeymoon', 'Nature'], nights: 5, days: 6, price: 24900, was: 28500, rating: 4.7, reviews: 96, sold: 164,
     from: ['Mumbai', 'Delhi', 'Ahmedabad'], months: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan'],

@@ -161,3 +161,18 @@ body.dash{background:#f4f7fb}
   .side-user{display:none}
   .main{max-width:100%}
 }
+
+/* itinerary line editor */
+.lines{margin-bottom:12px}
+.line{display:grid;grid-template-columns:24px 1fr 28px;gap:10px;align-items:start;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-s);padding:12px 14px;margin-bottom:9px}
+.line .dg{color:var(--mut);cursor:grab;font-size:15px;padding-top:7px}
+.line input{border:0;outline:0;width:100%;font:500 15px var(--f);color:var(--ink);padding:6px 0;line-height:1.5}
+.line .del{border:0;background:none;color:var(--mut);font-size:19px;cursor:pointer;line-height:1;padding-top:4px}
+.line .del:hover{color:var(--coral)}
+.line:focus-within{border-color:var(--brand);box-shadow:0 0 0 3px rgba(14,95,216,.1)}
+.subs{border-left:2px solid var(--line);margin:4px 0 0 2px;padding-left:12px}
+.subs .sub{display:grid;grid-template-columns:14px 1fr;gap:8px;align-items:center}
+.subs .sub span{color:var(--mut)}
+.subs .sub input{font-size:14.5px}
+.addsub{border:0;background:none;color:var(--brand);font:700 13px var(--f);cursor:pointer;padding:6px 0 2px}
