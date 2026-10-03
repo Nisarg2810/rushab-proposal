@@ -156,6 +156,7 @@
       '<div class="sec tight" style="padding-bottom:0"><div class="sec-h"><div><h2 style="font-size:26px">Travellers also looked at</h2></div></div>' +
       '<div class="grid">' + similar.map(card).join('') + '</div></div>';
 
+    popArm(p);
     state.pax = { a: 2, c: 0 };
     var sync = function () {
       var a = state.pax.a, c = state.pax.c;
@@ -176,6 +177,7 @@
 
   /* ---------------------------------------------------------- enquiry form */
   function enquiry(pkgId) {
+    popStop();
     var p = PKGS.filter(function (x) { return x.id === pkgId; })[0] || PKGS[0];
     $('#modal').innerHTML =
       '<h3>Plan this trip with us</h3>' +
@@ -197,6 +199,7 @@
         ($('#ePhone').value ? $('#eName') : $('#ePhone')).style.borderColor = 'var(--coral)';
         return;
       }
+      state.sent = true;
       $('#modal').innerHTML = '<div class="done"><div class="ok">✓</div>' +
         '<h3>Thanks ' + name.split(' ')[0] + ', we have it.</h3>' +
         '<p class="sub" style="margin-bottom:18px">A planner will call you within a few hours. Your enquiry now sits in the dashboard with the package, the dates, the budget and where you came from.</p>' +
@@ -205,6 +208,64 @@
       $('#eClose').onclick = function () { $('#mask').classList.remove('on'); };
     };
   }
+
+  /* ------------------------------------------------- lead popup on a package */
+  var pop = { timer: null, armed: false };
+
+  function popShow(p) {
+    if (!pop.armed || state.sent || $('#mask').classList.contains('on')) return;
+    pop.armed = false;
+    try { sessionStorage.setItem('rt-pop', '1'); } catch (e) {}
+    $('#modal').innerHTML =
+      '<div class="pop-top"><span>Price drops on this trip</span>' +
+        '<b>Get the full day by day plan and today\u2019s price on WhatsApp</b>' +
+        '<small>' + p.name + ', ' + p.nights + ' nights, from ' + inr(p.price) + ' per person</small></div>' +
+      '<div class="fld"><label>Your name</label><input id="pName" placeholder="Rhea Shah"></div>' +
+      '<div class="fld"><label>Mobile number</label><input id="pPhone" placeholder="+91 98250 00000" inputmode="tel"></div>' +
+      '<label class="pop-chk"><input type="checkbox" id="pWa" checked><span>Send it to me on WhatsApp</span></label>' +
+      '<button class="btn btn-p" id="pSend" style="width:100%;margin-top:4px">Send me the details</button>' +
+      '<button class="pop-no" id="pNo">No thanks, I am just looking</button>';
+    $('#mask').classList.add('on');
+    $('#pNo').onclick = function () { $('#mask').classList.remove('on'); };
+    $('#pSend').onclick = function () {
+      var name = ($('#pName').value || '').trim();
+      if (!name || !($('#pPhone').value || '').trim()) {
+        ($('#pPhone').value ? $('#pName') : $('#pPhone')).style.borderColor = 'var(--coral)';
+        return;
+      }
+      state.sent = true;
+      $('#modal').innerHTML = '<div class="done"><div class="ok">\u2713</div>' +
+        '<h3>On its way, ' + name.split(' ')[0] + '.</h3>' +
+        '<p class="sub" style="margin-bottom:18px">The itinerary and price are coming to you on WhatsApp. This is now a lead in the dashboard, tagged as the package page popup, with the package, the page you were on and how you found the site.</p>' +
+        '<a class="btn btn-o" href="../dashboard/" style="width:100%">See it land in the dashboard</a>' +
+        '<button class="btn btn-p" id="pClose" style="width:100%;margin-top:10px">Keep browsing</button></div>';
+      $('#pClose').onclick = function () { $('#mask').classList.remove('on'); };
+    };
+  }
+
+  function popArm(p) {
+    clearTimeout(pop.timer);
+    var seen = false;
+    try { seen = !!sessionStorage.getItem('rt-pop'); } catch (e) {}
+    if (seen || state.sent) { pop.armed = false; return; }
+    pop.armed = true;
+    pop.timer = setTimeout(function () { popShow(p); }, 16000);
+    var onScroll = function () {
+      var d = document.documentElement;
+      if (!pop.armed) { window.removeEventListener('scroll', onScroll); return; }
+      if ((d.scrollTop + window.innerHeight) / d.scrollHeight > 0.45) {
+        window.removeEventListener('scroll', onScroll);
+        popShow(p);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    var onOut = function (e) {
+      if (e.clientY <= 0 && window.innerWidth > 900) { document.removeEventListener('mouseout', onOut); popShow(p); }
+    };
+    document.addEventListener('mouseout', onOut);
+  }
+
+  function popStop() { pop.armed = false; clearTimeout(pop.timer); }
 
   /* -------------------------------------------------------------- whatsapp */
   var WA = [
@@ -262,6 +323,7 @@
     }
     if (el = e.target.closest('[data-go]')) {
       var to = el.getAttribute('data-go');
+      popStop();
       if (to === 'list') { listing(); show('vList'); } else { show('vHome'); }
       $$('.nav a').forEach(function (a) { a.classList.toggle('on', a === el); });
       return;

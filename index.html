@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
 <link rel="stylesheet" href="assets/site.css?v=2">
-<link rel="stylesheet" href="assets/prop.css?v=3">
+<link rel="stylesheet" href="assets/prop.css?v=5">
 </head>
 <body class="prop">
 
@@ -21,7 +21,6 @@
     <a href="#cms">The dashboard</a>
     <a href="#crm">Leads</a>
     <a href="#build">How it is built</a>
-    <a href="#plan">Plan</a>
     <a href="#price">Investment</a>
   </nav>
 </div></header>
@@ -38,7 +37,7 @@
   <div class="p-meta">
     <div><b>Both links are live</b><span>Click through them before you read anything else</span></div>
     <div><b>Next.js, NestJS, PostgreSQL</b><span>The stack you asked for</span></div>
-    <div><b>8 to 10 weeks</b><span>From kick off to launch</span></div>
+    <div><b>4 to 5 weeks</b><span>From kick off to launch</span></div>
   </div>
 </div></section>
 
@@ -224,47 +223,48 @@
 <!-- ============ STACK ============ -->
 <section class="p-s p-alt" id="build"><div class="wrap">
   <div class="p-h"><div class="p-num">08</div><h2>How it is built</h2>
-    <p>Exactly the stack you specified. All of it is mainstream and well documented, so you are never locked to one developer, including us.</p></div>
-  <div class="p-stack">
-    <div><small>Frontend</small><b>Next.js, React, TypeScript</b><span>Server rendered pages for speed and for Google, typed code so a change in one place cannot quietly break another.</span></div>
-    <div><small>Styling</small><b>Bootstrap, responsive</b><span>A familiar grid any developer can pick up, with a Rushab Tours theme layered on top so it does not look like a template.</span></div>
-    <div><small>Backend</small><b>Node.js, NestJS, REST</b><span>A clean REST API with validation, roles and documentation, so the site, the dashboard and anything you add later all talk to the same thing.</span></div>
-    <div><small>Database</small><b>PostgreSQL</b><span>Packages, itineraries, prices, leads and users, with daily automated backups and point in time recovery.</span></div>
-  </div>
-  <div class="p-g3" style="margin-top:22px">
-    <div class="p-card"><h3>Hosting and deployment</h3><p>Frontend on a global edge network, API and database on a managed host in the India region so pages load fast for Indian travellers. Deployments are automated, and any release can be rolled back.</p></div>
-    <div class="p-card"><h3>Security</h3><p>HTTPS everywhere, hashed passwords, role based access, rate limited forms, spam protection on the enquiry form, and an audit trail of who changed which package.</p></div>
-    <div class="p-card"><h3>Yours, not ours</h3><p>The code sits in a repository in your name, the domains and hosting stay in your accounts, and the database can be exported any time. Handover is written into the plan, not promised at the end.</p></div>
-  </div>
-</div></section>
+    <p>Exactly the stack you specified, arranged so each piece has one job. The website and the dashboard are the same application wearing two faces, and both talk to one API, so a price changed in one place is correct everywhere.</p></div>
 
-<!-- ============ PLAN ============ -->
-<section class="p-s" id="plan"><div class="wrap">
-  <div class="p-h"><div class="p-num">09</div><h2>The plan, eight to ten weeks</h2>
-    <p>You see working software from week two, not a document. Every Friday you get a link to the current build and a short note on what moved.</p></div>
-  <div class="p-steps">
-    <div class="p-step"><div class="p-w">Weeks 1 to 2<small>Design and data</small></div><div>
-      <h3>The look, and the shape of a package</h3>
-      <p>Final design for the home, listing, package and destination pages, on desktop and phone. In parallel we map every field a package needs, using your existing packages as the test. Nothing is built until you have signed off the design.</p></div></div>
-    <div class="p-step"><div class="p-w">Weeks 3 to 5<small>Build</small></div><div>
-      <h3>The dashboard and the API</h3>
-      <p>PostgreSQL schema, the NestJS API, authentication and roles, the package editor with all eight tabs, the media library, destinations and the pricing calendar. By the end of this your team can start loading packages.</p></div></div>
-    <div class="p-step"><div class="p-w">Weeks 5 to 7<small>Build</small></div><div>
-      <h3>The website</h3>
-      <p>Home, search, listing with filters, package pages, destination pages, the enquiry flow, the WhatsApp bubble and the lead capture that feeds the CRM. Built against real content, not placeholder text.</p></div></div>
-    <div class="p-step"><div class="p-w">Week 8<small>Content</small></div><div>
-      <h3>Loading your packages</h3>
-      <p>We move your current packages across with you and train your team on the dashboard, screen by screen, recorded so new staff can watch it later.</p></div></div>
-    <div class="p-step"><div class="p-w">Weeks 9 to 10<small>Launch</small></div><div>
-      <h3>Testing, speed, Google, live</h3>
-      <p>Testing on real phones, speed tuning, redirects from your current URLs so you keep your Google rankings, analytics and ads tracking connected, then the switch. We stay on hand through the first fortnight.</p></div></div>
+  <div class="p-arch">
+    <div class="p-layer">
+      <span class="p-tag">What people use</span>
+      <div class="p-boxes">
+        <div><b>rushabtours.com</b><small>The traveller. Next.js, React and TypeScript, server rendered so Google can read every package page.</small></div>
+        <div><b>dashboard.rushabtours.com</b><small>Your team. Same codebase, behind a login, with what each role is allowed to see.</small></div>
+      </div>
+    </div>
+
+    <div class="p-wire"><span>REST over HTTPS</span></div>
+
+    <div class="p-layer">
+      <span class="p-tag">The part that decides</span>
+      <div class="p-boxes p-one">
+        <div><b>NestJS API</b><small>Authentication and roles, validation on every field, documented endpoints. One source of truth for packages, prices, media and leads, so nothing is calculated twice in two places.</small></div>
+      </div>
+    </div>
+
+    <div class="p-wire"><span>Queries and uploads</span></div>
+
+    <div class="p-layer">
+      <span class="p-tag">Where it is kept</span>
+      <div class="p-boxes">
+        <div><b>PostgreSQL</b><small>Packages, itineraries, seasonal prices, leads and users. Backed up daily, restorable to any point in the last 30 days.</small></div>
+        <div><b>Object storage</b><small>Every photo, resized on upload and served in modern formats so a gallery does not cost a traveller their data pack.</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-g3" style="margin-top:26px">
+    <div class="p-card"><h3>Built to be fast in India</h3><p>Pages served from an edge network, with the API and database hosted in the India region. The target is a package page open in under two seconds on 4G, on a mid range Android phone.</p></div>
+    <div class="p-card"><h3>Built to be safe</h3><p>HTTPS everywhere, hashed passwords, roles enforced on the server rather than hidden in the screen, rate limited forms, spam protection on enquiries, and a record of who changed which package.</p></div>
+    <div class="p-card"><h3>Built to be yours</h3><p>The code sits in a repository in your name, the domain and hosting stay in your accounts, and the database exports any time you ask. Nothing here needs us to keep running.</p></div>
   </div>
 </div></section>
 
 <!-- ============ SCOPE ============ -->
 <section class="p-s p-alt" id="scope"><div class="wrap">
-  <div class="p-h"><div class="p-num">10</div><h2>What you get, and what you do not</h2>
-    <p>Written plainly so there are no surprises in week nine.</p></div>
+  <div class="p-h"><div class="p-num">09</div><h2>What you get, and what you do not</h2>
+    <p>Written plainly so there are no surprises in week four.</p></div>
   <div class="p-g2" style="align-items:start">
     <div class="p-card"><span class="p-k">Included</span>
       <ul class="p-lst" style="margin-top:4px">
@@ -298,7 +298,7 @@
 
 <!-- ============ PRICE ============ -->
 <section class="p-s" id="price"><div class="wrap">
-  <div class="p-h"><div class="p-num">11</div><h2>Investment</h2>
+  <div class="p-h"><div class="p-num">10</div><h2>Investment</h2>
     <p>One figure for the whole thing. No hourly billing, no change requests priced mid project, and revisions within the agreed scope are simply part of the work.</p></div>
   <!-- NUMBER: change the figure below if the commercial lands differently -->
   <div class="p-price">
@@ -310,12 +310,6 @@
       <div><b>50 percent</b><span>On kick off, to start design</span></div>
       <div><b>25 percent</b><span>When the dashboard is working</span></div>
       <div><b>25 percent</b><span>On launch, once you are happy</span></div>
-    </div>
-    <div class="p-inc">
-      <span>No charge for revisions in scope</span>
-      <span>No monthly licence on the CMS</span>
-      <span>Code and data are yours</span>
-      <span>Weekly build link, so you see progress</span>
     </div>
   </div>
   <div class="p-g3" style="margin-top:22px">

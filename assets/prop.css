@@ -77,13 +77,23 @@ body.prop{background:#fff}
 .p-step p{margin:0;font-size:15px}
 @media(max-width:700px){.p-step{grid-template-columns:1fr;gap:10px}}
 
-.p-stack{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:980px){.p-stack{grid-template-columns:1fr 1fr}}
-.p-stack div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px}
-.p-stack b{display:block;color:var(--ink);font-size:16px;margin-bottom:6px}
-.p-stack span{font-size:14px;color:var(--body)}
-.p-stack small{display:block;font:800 11px var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:9px}
-
+.p-arch{background:linear-gradient(165deg,#07172c,#0e3358);border-radius:18px;padding:30px;box-shadow:var(--sh2)}
+@media(max-width:700px){.p-arch{padding:20px}}
+.p-layer{position:relative}
+.p-tag{display:block;font:800 11px var(--f);letter-spacing:.16em;text-transform:uppercase;color:#6ea8f0;margin-bottom:12px}
+.p-boxes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.p-boxes.p-one{grid-template-columns:1fr}
+@media(max-width:700px){.p-boxes{grid-template-columns:1fr}}
+.p-boxes>div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:18px 20px}
+.p-boxes.p-one>div{background:rgba(14,95,216,.26);border-color:rgba(123,178,255,.4)}
+.p-boxes b{display:block;color:#fff;font-size:17px;letter-spacing:-.01em}
+.p-boxes small{display:block;color:#b2cbe4;font-size:13.5px;line-height:1.6;margin-top:7px}
+.p-wire{display:flex;align-items:center;gap:14px;padding:16px 0 14px;color:#7f9fc0;font-size:12.5px;font-weight:700;
+  letter-spacing:.04em}
+.p-wire::before{content:"";width:1px;height:22px;background:rgba(255,255,255,.26);margin-left:28px}
+.p-wire span{position:relative;padding-left:14px}
+.p-wire span::before{content:"\2193";position:absolute;left:-2px;color:#6ea8f0;font-weight:800}
+.p-wire::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.18),transparent)}
 .p-price{background:linear-gradient(160deg,#07172c,#0e3a6b);color:#fff;border-radius:18px;padding:44px;box-shadow:var(--sh2)}
 .p-price .p-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
   padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.16)}

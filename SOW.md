@@ -59,7 +59,7 @@ Server rendered, revalidated on publish (ISR or on-demand revalidation webhook f
 | Compare | `/compare` | Up to 3 shortlisted packages side by side (shortlist in localStorage) |
 | Static | `/group-tours`, `/visa`, `/about`, `/contact` | CMS driven blocks |
 
-Also: enquiry modal (reusable, works from any page), WhatsApp widget (section 6), 404, sitemap.xml, robots.txt, JSON-LD (`Product` + `AggregateRating` + `BreadcrumbList`), OG tags per package, 301 redirects from every current rushabtours.com URL (client supplies the list, dev implements in middleware).
+Also: enquiry modal (reusable, works from any page), **lead popup on package pages** (fires once per session on whichever comes first: 16 seconds, scrolling past 45 percent, or desktop exit intent; name and mobile only, WhatsApp opt in checked by default, creates a lead with `source = package_popup` and the package it fired on; suppressed once the traveller has already enquired), WhatsApp widget (section 6), 404, sitemap.xml, robots.txt, JSON-LD (`Product` + `AggregateRating` + `BreadcrumbList`), OG tags per package, 301 redirects from every current rushabtours.com URL (client supplies the list, dev implements in middleware).
 
 **Performance budget:** LCP under 2.5s on 4G mid range Android, CLS under 0.1, package page JS under 180KB gzipped. Images via `next/image`, AVIF/WebP, lazy below the fold.
 
@@ -99,7 +99,7 @@ Same Next.js app, separate subdomain and route group, auth gated.
 
 **Form fields:** name, mobile (with "this number is on WhatsApp" checkbox), email, package (prefilled), travel date + flexible yes/no, adults, children + ages, budget band, free text note.
 
-**Captured silently:** source (Google Ads / organic / Instagram / referral / WhatsApp widget / direct), full UTM set, landing page, referrer, search term where available, page view path and count in session, time on site, city (IP lookup), device and browser, first package viewed vs package enquired, returning visitor matched on mobile number.
+**Captured silently:** source (Google Ads / organic / Instagram / referral / WhatsApp widget / package popup / direct), full UTM set, landing page, referrer, search term where available, page view path and count in session, time on site, city (IP lookup), device and browser, first package viewed vs package enquired, returning visitor matched on mobile number.
 
 **Behaviour:** duplicate mobile within 30 days attaches to the existing lead as a new event rather than creating a second lead. Instant email + WhatsApp notification to the assigned user. Spam: honeypot field + rate limit per IP + Cloudflare Turnstile. Google Ads conversion fired on submit. GA4 event with package and value.
 
@@ -131,14 +131,15 @@ Official WhatsApp Business API is **out of scope** for v1, but keep the send lay
 
 ## 8. Phases and deliverables
 
-| Phase | Weeks | Deliverable |
+| Phase | Week | Deliverable |
 |---|---|---|
-| 1. Setup and schema | 1 | Monorepo, CI, environments, PostgreSQL schema, migrations, seed data, Swagger skeleton |
-| 2. API and auth | 2 to 3 | All CRUD endpoints, auth, roles, media upload, publish/revalidate webhook, API docs complete |
-| 3. Dashboard | 3 to 5 | Every screen in section 4, working against the real API |
-| 4. Website | 5 to 7 | Every page in section 3, real data, enquiry flow, WhatsApp widget, lead capture |
-| 5. Content and training | 8 | Migration of existing packages with the client, recorded training, written guide |
-| 6. Launch | 9 to 10 | SEO, redirects, speed pass, cross device QA, analytics, go live, 30 days support |
+| 1. Setup, schema, design | 1 | Monorepo, CI, environments, PostgreSQL schema, migrations, seed data, Swagger skeleton, signed off page designs |
+| 2. API and auth | 2 | All CRUD endpoints, auth, roles, media upload, publish and revalidate webhook, API docs complete |
+| 3. Dashboard | 3 | Every screen in section 4, working against the real API |
+| 4. Website | 4 | Every page in section 3, real data, enquiry flow, lead popup, WhatsApp widget, lead capture |
+| 5. Content, QA, launch | 5 | Migration of existing packages with the client, training, SEO and redirects, speed pass, cross device QA, analytics, go live, then 30 days of support |
+
+Five weeks is the working plan. Build in client review into weeks 1 and 4, and if sign off slips the schedule moves with it, which is the usual reason a build like this lands in week six rather than week five.
 
 Weekly: a deployed staging link and a short written note of what moved. No phase is closed until its acceptance list passes.
 
