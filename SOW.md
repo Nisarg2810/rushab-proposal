@@ -2,6 +2,7 @@
 
 **Client:** Rushab Tours (rushabtours.com)
 **Build:** Package first website + CMS + CRM
+**Commercials:** INR 49,000 all in, 50 / 25 / 25, one year of maintenance included
 **Reference prototype:** `/site/` (public site), `/dashboard/` (admin). Build to match these screens.
 **Content reference:** the client's live Andaman package page. Every block on it is a field in the CMS, nothing is hard coded.
 
@@ -27,8 +28,10 @@ Rules: no `any` in shared types, API types generated from one source, all list e
 
 - **package** id, slug, name, destination_id, country, nights, days, base_price, strike_price, status (draft/live), themes[], departure_cities[], best_months[], blurb, rating, review_count, seo_title, seo_description, og_image, created_by, updated_at
 - **package_city** package_id, city_name, nights, sort
+- **testimonial** id, name, city, package_id, rating, text, photo_id, status (pending/approved), travel_date
+- **gallery_photo** id, media_id, caption, package_id (nullable), source (guest/instagram), sort, status
 - **package_hotel** package_id, city, hotel_name, star, room_type, meal_plan, room_inclusion, date_from, date_to, sort
-- **itinerary_day** package_id, day_no, travel_date, title, sort
+- **itinerary_day** package_id, day_no, travel_date, title, media_id (the photo shown against that day), sort
 - **itinerary_line** day_id, text, sort, parent_line_id (nullable, one level of sub bullets, as on the live Andaman page)
 - **sight** id, name, note, image_id (reusable across packages) + **package_sight** join with sort
 - **package_list** package_id, type (inclusion/exclusion/note/cancellation/payment), line, sort
@@ -57,6 +60,7 @@ Server rendered, revalidated on publish (ISR or on-demand revalidation webhook f
 | Destination | `/holidays/[destination]` | Hero, description, best months, its packages. This is the SEO page |
 | Package | `/holidays/[destination]/[slug]` | Blocks in this exact order, matching the client's current page: title with nights/days and (2N) city breakdown, gallery, hotels, day wise itinerary with dates, sightseeing, inclusions, exclusions, special notes, cancellation policy, payment policy, reviews, and a sticky booking box (date picker, adults and children steppers, per person rate, total amount) |
 | Compare | `/compare` | Up to 3 shortlisted packages side by side (shortlist in localStorage) |
+| Gallery | `/gallery` | Guest photos plus an Instagram feed, both managed in the dashboard |
 | Static | `/group-tours`, `/visa`, `/about`, `/contact` | CMS driven blocks |
 
 Also: enquiry modal (reusable, works from any page), **lead popup on package pages** (fires once per session on whichever comes first: 16 seconds, scrolling past 45 percent, or desktop exit intent; name and mobile only, WhatsApp opt in checked by default, creates a lead with `source = package_popup` and the package it fired on; suppressed once the traveller has already enquired), WhatsApp widget (section 6), 404, sitemap.xml, robots.txt, JSON-LD (`Product` + `AggregateRating` + `BreadcrumbList`), OG tags per package, 301 redirects from every current rushabtours.com URL (client supplies the list, dev implements in middleware).
@@ -97,9 +101,11 @@ Same Next.js app, separate subdomain and route group, auth gated.
 
 ## 5. Lead capture (CRM)
 
-**Form fields:** name, mobile (with "this number is on WhatsApp" checkbox), email, package (prefilled), travel date + flexible yes/no, adults, children + ages, budget band, free text note.
+**Form fields:** name, mobile (with "this number is on WhatsApp" checkbox), email, package (prefilled), travel date + flexible yes/no, **rooms**, adults, children + ages, budget band, free text note.
 
 **Captured silently:** source (Google Ads / organic / Instagram / referral / WhatsApp widget / package popup / direct), full UTM set, landing page, referrer, search term where available, page view path and count in session, time on site, city (IP lookup), device and browser, first package viewed vs package enquired, returning visitor matched on mobile number.
+
+**Notification:** every new lead is pushed to the assigned user on WhatsApp as it arrives, with the name, number, package and source, alongside the email notification.
 
 **Behaviour:** duplicate mobile within 30 days attaches to the existing lead as a new event rather than creating a second lead. Instant email + WhatsApp notification to the assigned user. Spam: honeypot field + rate limit per IP + Cloudflare Turnstile. Google Ads conversion fired on submit. GA4 event with package and value.
 
@@ -107,7 +113,7 @@ Same Next.js app, separate subdomain and route group, auth gated.
 
 ## 6. WhatsApp widget
 
-1. Bubble bottom right, scripted chat opens in place. Four button questions: destination, month, travellers, budget.
+1. Bubble bottom right, labelled **Chat With Expert**, scripted chat opens in place. Four button questions: destination, month, travellers, budget.
 2. On finish, create the lead server side (source = `whatsapp_widget`) with the answers and all silent fields.
 3. Then deep link to `wa.me/<number>?text=` with the answers written into the first message.
 4. Mobile: full screen sheet. Desktop: 360px panel. Dismiss state remembered for the session.
@@ -115,6 +121,19 @@ Same Next.js app, separate subdomain and route group, auth gated.
 Official WhatsApp Business API is **out of scope** for v1, but keep the send layer behind an interface so it can be swapped in later.
 
 ---
+
+## 6b. Added in the client's second round
+
+- **Social links** in the header and footer, managed in the dashboard
+- **Guest image gallery** plus an **Instagram feed** section, both CMS managed, with a dedicated `/gallery` page and a strip on the home page
+- **Testimonials**, collected after travel, approved in the dashboard before they appear, shown on the home page and on each package
+- **A photo per itinerary day**, picked from the media library in the itinerary tab
+- **Rooms** captured alongside adults and children, everywhere a traveller states their group
+- **Share this package**: WhatsApp, copy link and email, with Open Graph tags so the shared link previews correctly
+- **Download this package as a PDF**, gated on name, mobile and email, which creates a lead with `source = pdf_download`; the PDF is generated server side from the same package data, so it can never go stale
+- **Lead popup** anchored to the **right side** of the screen, not centred, once per session
+- **Employee accounts** with per role access as in section 4
+- **Lead source tracking** across Google Ads, organic search, Instagram, referral, WhatsApp and direct, down to campaign and search term, reported by source
 
 ## 7. Non functional
 
@@ -137,7 +156,7 @@ Official WhatsApp Business API is **out of scope** for v1, but keep the send lay
 | 2. API and auth | 2 | All CRUD endpoints, auth, roles, media upload, publish and revalidate webhook, API docs complete |
 | 3. Dashboard | 3 | Every screen in section 4, working against the real API |
 | 4. Website | 4 | Every page in section 3, real data, enquiry flow, lead popup, WhatsApp widget, lead capture |
-| 5. Content, QA, launch | 5 | Migration of existing packages with the client, training, SEO and redirects, speed pass, cross device QA, analytics, go live, then 30 days of support |
+| 5. Content, QA, launch | 5 | Migration of existing packages with the client, training, SEO and redirects, speed pass, cross device QA, analytics, go live, then **one year of maintenance** |
 
 Five weeks is the working plan. Build in client review into weeks 1 and 4, and if sign off slips the schedule moves with it, which is the usual reason a build like this lands in week six rather than week five.
 
@@ -170,4 +189,4 @@ One decision maker for sign off, existing package content in any format, the pho
 
 ## 12. Handover
 
-Repository transferred to the client org, environment variables documented, deployment runbook, database export, Swagger docs, recorded training videos, and a 30 day support window after launch for defects at no extra cost.
+Repository transferred to the client org, environment variables documented, deployment runbook, database export, Swagger docs, recorded training videos, and one year of maintenance after launch: hosting support, backups and monitoring, security updates, bug fixes and small content or design changes, at no extra cost.
