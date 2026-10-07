@@ -3,6 +3,7 @@
 **Client:** Rushab Tours (rushabtours.com)
 **Build:** Package first website + CMS + CRM
 **Commercials:** INR 49,000 all in, 50 / 25 / 25, one year of maintenance included
+**Timeline:** 20 working days from kick off to live
 **Reference prototype:** `/site/` (public site), `/dashboard/` (admin). Build to match these screens.
 **Content reference:** the client's live Andaman package page. Every block on it is a field in the CMS, nothing is hard coded.
 
@@ -61,7 +62,8 @@ Server rendered, revalidated on publish (ISR or on-demand revalidation webhook f
 | Package | `/holidays/[destination]/[slug]` | Blocks in this exact order, matching the client's current page: title with nights/days and (2N) city breakdown, gallery, hotels, day wise itinerary with dates, sightseeing, inclusions, exclusions, special notes, cancellation policy, payment policy, reviews, and a sticky booking box (date picker, adults and children steppers, per person rate, total amount) |
 | Compare | `/compare` | Up to 3 shortlisted packages side by side (shortlist in localStorage) |
 | Gallery | `/gallery` | Guest photos plus an Instagram feed, both managed in the dashboard |
-| Static | `/group-tours`, `/visa`, `/about`, `/contact` | CMS driven blocks |
+| Partner links | `/flights`, `/hotels`, `/bus`, `/insurance` | Short pages that hand over to the client's booking partner, each with its own copy and image, CMS managed |
+| Static | `/group-tours`, `/visa`, `/about`, `/contact`, `/faq`, `/terms`, `/privacy` | CMS driven blocks. Contact carries an enquiry form that creates a lead, plus a map |
 
 Also: enquiry modal (reusable, works from any page), **lead popup on package pages** (fires once per session on whichever comes first: 16 seconds, scrolling past 45 percent, or desktop exit intent; name and mobile only, WhatsApp opt in checked by default, creates a lead with `source = package_popup` and the package it fired on; suppressed once the traveller has already enquired), WhatsApp widget (section 6), 404, sitemap.xml, robots.txt, JSON-LD (`Product` + `AggregateRating` + `BreadcrumbList`), OG tags per package, 301 redirects from every current rushabtours.com URL (client supplies the list, dev implements in middleware).
 
@@ -150,15 +152,15 @@ Official WhatsApp Business API is **out of scope** for v1, but keep the send lay
 
 ## 8. Phases and deliverables
 
-| Phase | Week | Deliverable |
+| Phase | Days | Deliverable |
 |---|---|---|
-| 1. Setup, schema, design | 1 | Monorepo, CI, environments, PostgreSQL schema, migrations, seed data, Swagger skeleton, signed off page designs |
-| 2. API and auth | 2 | All CRUD endpoints, auth, roles, media upload, publish and revalidate webhook, API docs complete |
-| 3. Dashboard | 3 | Every screen in section 4, working against the real API |
-| 4. Website | 4 | Every page in section 3, real data, enquiry flow, lead popup, WhatsApp widget, lead capture |
-| 5. Content, QA, launch | 5 | Migration of existing packages with the client, training, SEO and redirects, speed pass, cross device QA, analytics, go live, then **one year of maintenance** |
+| 1. Setup, schema, design | 1 to 3 | Monorepo, CI, environments, PostgreSQL schema, migrations, seed data, signed off page designs |
+| 2. API and auth | 4 to 7 | All CRUD endpoints, auth, roles, media upload, publish and revalidate webhook, API docs complete |
+| 3. Dashboard | 8 to 12 | Every screen in section 4, working against the real API |
+| 4. Website | 13 to 17 | Every page in section 3, real data, enquiry flow, lead popup, WhatsApp widget, lead capture |
+| 5. Content, QA, launch | 18 to 20 | Migration of existing packages with the client, training, SEO and redirects, speed pass, cross device QA, analytics, go live, then one year of maintenance |
 
-Five weeks is the working plan. Build in client review into weeks 1 and 4, and if sign off slips the schedule moves with it, which is the usual reason a build like this lands in week six rather than week five.
+Twenty working days is the plan. Design sign off sits on day 3 and content review on day 17, so if the client is slow to come back the schedule moves with them. That is the usual reason a build like this lands on day 26 rather than day 20.
 
 Weekly: a deployed staging link and a short written note of what moved. No phase is closed until its acceptance list passes.
 
